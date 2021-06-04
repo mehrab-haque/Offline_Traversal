@@ -1,4 +1,5 @@
 #include<iostream>
+#include <fstream>
 #include <vector>
 #include<queue>
 
@@ -75,10 +76,14 @@ int main(){
 	}
 	int totalCollected;
 	
+	//file
+	ofstream myFile;
+  	myFile.open ("output.txt");
+	
 	//bfs
 	for(int i=0;i<C;i++)
 		isVisited[i]=false;
-	cout<<endl<<"########BFS########"<<endl;
+	myFile<<endl<<"########BFS########"<<endl;
 	for(int j=0;j<C;j++)
 		currPieceList[j]=originalPieceList[j];
 	totalCollected=0;
@@ -89,18 +94,18 @@ int main(){
 		totalCollected+=collectionList[j];
 	}
 	if(totalCollected==nPieces)
-		cout<<"Mission Accomplished"<<endl;
+		myFile<<"Mission Accomplished"<<endl;
 	else
-		cout<<"Mission Impossible"<<endl;
-	cout<<totalCollected<<" out of "<<nPieces<<" pieces are collected"<<endl;
+		myFile<<"Mission Impossible"<<endl;
+	myFile<<totalCollected<<" out of "<<nPieces<<" pieces are collected"<<endl;
 	for(int j=0;j<F;j++)
-		cout<<j<<" collected "<<collectionList[j]<<" pieces"<<endl;
+		myFile<<j<<" collected "<<collectionList[j]<<" pieces"<<endl;
 	
 	
 	//dfs
 	for(int i=0;i<C;i++)
 		isVisited[i]=false;
-	cout<<endl<<"########DFS########"<<endl;
+	myFile<<endl<<"########DFS########"<<endl;
 	for(int j=0;j<C;j++)
 		currPieceList[j]=originalPieceList[j];
 	totalCollected=0;
@@ -111,12 +116,12 @@ int main(){
 		totalCollected+=collectionList[j];
 	}
 	if(totalCollected==nPieces)
-		cout<<"Mission Accomplished"<<endl;
+		myFile<<"Mission Accomplished"<<endl;
 	else
-		cout<<"Mission Impossible"<<endl;
-	cout<<totalCollected<<" out of "<<nPieces<<" pieces are collected"<<endl;
+		myFile<<"Mission Impossible"<<endl;
+	myFile<<totalCollected<<" out of "<<nPieces<<" pieces are collected"<<endl;
 	for(int j=0;j<F;j++)
-		cout<<j<<" collected "<<collectionList[j]<<" pieces"<<endl;
+		myFile<<j<<" collected "<<collectionList[j]<<" pieces"<<endl;
 	
 	
 	return 0;
